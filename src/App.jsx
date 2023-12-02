@@ -6,22 +6,28 @@ const App = () => {
   const [index, setIndex] = useState(0);
   const { name, job, image, text } = data[index];
 
+  const checkNumber = (number) => {
+    if (number < 0) {
+      return data.length - 1;
+    }
+    if (number > data.length - 1) {
+      return 0;
+    }
+    return number;
+  };
+
   const cycleReviewBack = () => {
     setIndex((currentIndex) => {
       const newIndex = currentIndex - 1;
-      if (newIndex < 0) {
-        return data.length - 1;
-      }
-      return newIndex;
+
+      return checkNumber(newIndex);
     });
   };
   const cycleReviewForward = () => {
     setIndex((currentIndex) => {
       const newIndex = currentIndex + 1;
-      if (newIndex > data.length - 1) {
-        return 0;
-      }
-      return newIndex;
+
+      return checkNumber(newIndex);
     });
   };
   const randomReview = () => {
