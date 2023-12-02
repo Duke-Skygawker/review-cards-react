@@ -31,7 +31,11 @@ const App = () => {
     });
   };
   const randomReview = () => {
-    setIndex(Math.floor(Math.random() * data.length));
+    let randomNumber = Math.floor(Math.random() * data.length);
+    if (randomNumber === index) {
+      randomNumber = index + 1;
+    }
+    setIndex(checkNumber(randomNumber));
   };
 
   return (
